@@ -11,16 +11,15 @@ import java.util.*;
  */
 class Solution {
     public ListNode reverseList(ListNode head) {
+        //use three pointers: prev to set next to, curr, next to iterate list
         ListNode prev = null;
-        ListNode current = head;
+        ListNode curr = head;
         ListNode next = null;
-        while (current != null) {
-            next = current.next;
-            current.next = prev;
-            prev = current;
-            current = next;
-            //if(prev.val!=null && next.val!=null && current.val!=null)
-           // System.out.println(next.val);
+        while(curr!=null){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
         }
         head = prev;
         return head;
