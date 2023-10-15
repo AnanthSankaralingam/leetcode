@@ -10,44 +10,36 @@
  */
 class Solution {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-        if(list1 == null )
+        if(list1 == null && list2 == null)
+            return null;
+        if(list1 == null)
             return list2;
         if(list2==null)
             return list1;
-        ListNode head;//resultant head
-        ListNode temp;//pointer
-        if(list1.val < list2.val)
-        {
-            temp = head = new ListNode(list1.val);
-            list1 = list1.next;
-        }
-        else{
-            temp = head= new ListNode(list2.val);
-            list2=list2.next;
-        }
-        while(list1 != null && list2!=null)
-        {
-            if(list1.val < list2.val)
-            {
-                temp.next = new ListNode(list1.val);
+
+        ListNode head = new ListNode();
+        ListNode curr = head;
+        //don't update both list1 and 2 together - one per iteration
+        while (list1 != null && list2 != null) {
+            if (list1.val <= list2.val) {
+                curr.next = list1;
                 list1 = list1.next;
-            }
-            else{
-                temp.next = new ListNode(list2.val);
+            } else {
+                curr.next = list2;
                 list2 = list2.next;
             }
-            temp = temp.next;
+            curr = curr.next;
         }
-        while(list1 != null){
-            temp.next = new ListNode(list1.val);
-            list1 = list1.next;
-            temp = temp.next;
+
+        // Append the remaining nodes from the non-empty list
+        if (list1 != null) {
+            curr.next = list1;
         }
-        while(list2 != null){
-            temp.next = new ListNode(list2.val);
-            list2 = list2.next;
-            temp = temp.next;
+        if (list2 != null) {
+            curr.next = list2;
         }
-        return head;
+
+        return head.next;
+
     }
 }
