@@ -1,4 +1,3 @@
-import java.util.*;
 /**
  * Definition for singly-linked list.
  * public class ListNode {
@@ -11,17 +10,13 @@ import java.util.*;
  */
 class Solution {
     public ListNode reverseList(ListNode head) {
-        //use three pointers: prev to set next to, curr, next to iterate list
-        ListNode prev = null;
-        ListNode curr = head;
-        ListNode next = null;
-        while(curr!=null){
-            next = curr.next;
-            curr.next = prev;
-            prev = curr;
-            curr = next;
+        ListNode prev = null, next = null;
+        while(head != null){
+            next = head.next;
+            head.next = prev;
+            prev = head;
+            head = next;
         }
-        head = prev;
-        return head;
+        return prev;
     }
 }
