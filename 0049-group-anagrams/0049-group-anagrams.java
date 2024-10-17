@@ -17,6 +17,6 @@ class Solution {
             }
         }
         
-        return new ArrayList<>(map.values()); //use parenthesis to convert array to arraylist
+        return new ArrayList<>(map.values()); //use parenthesis to input values
     }
 }
